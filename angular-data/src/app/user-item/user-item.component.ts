@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './user-item.component.html',
   styleUrls: ['./user-item.component.css']
 })
+
 export class UserItemComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  name: string; // <-- aggiunta la proprietà name
+  constructor() {
+    this.name = 'Felipe';
   }
-
+  ngOnInit() {
+  }
 }
+
