@@ -7,8 +7,9 @@ import {Post} from './models/post.model'
 })
 export class AppComponent {
   postList : Array<Post> = new Array<Post>();
-  invia(userPost : HTMLInputElement, userName : HTMLInputElement){
+  invia(userName : HTMLInputElement, userPost : HTMLInputElement){
       let newPost = new Post(userName.value, userPost.value);
       this.postList.push (newPost);
   }
 }
+//  (click)="addArticle(newuser, newpost)"

@@ -1,9 +1,11 @@
 <div>
-  <label for = "user"> Nome </label>
   <input type = "text" name = "user" #newuser>
+  <label for = "user"> Nome </label>
 </div>
 <div>
-  <label for = "post"> Post </label>
   <input type = "text" name = "post" #newpost>
+  <label for = "post"> Post </label>
 </div>
-<button (click)="addArticle(newuser, newpost)"> Invia </button>
+<button (click) = "invia(newuser, newpost)"> Invia </button>
+<hr>
+{{postList | json}}
