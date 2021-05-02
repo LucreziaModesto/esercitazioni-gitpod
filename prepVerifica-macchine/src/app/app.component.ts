@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; // punto 2
+import { Mezzo } from './models/driving.model';
+import { Observable } from 'rxjs';
+import { Rent } from './models/rent.model'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'prepVerifica-macchine';
+
+export class AppComponent implements OnInit {
+
+  obsMezzi : Observable<Mezzo[]>
+  constructor(private http: HttpClient) {} // punto 2
+  listaMezzi: Mezzo[];
+  rented: Mezzo = new Mezzo("#","#","#", "#")
+  rentedVector: Rent[] = new Array<Rent>()
+
+  ngOnInit(): void {
+    this.obsMezzi = this.http.get<Mezzo[]>('https://my-json-server.typicode.com/malizia-g/fine_anno_exp/mezzi') // punto 2
+    this.obsMezzi.subscribe(this.getMezzi)
+  }
+
+  getMezzi = (data : Mezzo[]) => {
+    this.listaMezzi = data;
+  }
+
 }
